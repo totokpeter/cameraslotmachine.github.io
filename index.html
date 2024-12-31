@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Walk Slot Machine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .slot {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        @keyframes spin {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-25px); }
+            50% { transform: translateY(-50px); }
+            75% { transform: translateY(-75px); }
+            100% { transform: translateY(0); }
+        }
+        .spinning {
+            animation: spin 0.5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Photography Walk Slot Machine</h1>
+    <div id="slots">
+        <div class="slot" id="digital-camera">📸</div>
+        <div class="slot" id="analogue-camera">📸</div>
+        <div class="slot" id="challenge">📸</div>
+    </div>
+    <button onclick="spinSlots()">Spin</button>
+
+    <script>
+        const digitalCameras = [
+            "Ricoh GR2 w/ a recipe we already know and like",
+            "Ricoh GR2 w/ an untested recipe",
+            "Ricoh GR2 w/ a black and white recipe",
+            "Ricoh GR2 w/ a random recipe",
+            "Ricoh GR2, but in raw",
+            "Sony NEX3N w/ the kit lens",
+            "Sony NEX3N w/ SEL35F18",
+            "Sony NEX3N w/ the Pentacon lens",
+            "Sony NEX3N w/ the Rokkor lens",
+            "Sony NEX3N w/ the Helios lens",
+            "A random digital camera"
+        ];
+
+        const analogueCameras = [
+            "Kodak Ektar H35N",
+            "Konica Big Mini 302",
+            "Canon EOS 500",
+            "Leica AF-C1",
+            "Zenith ET",
+            "Instax Mini",
+            "A random analogue point and shoot",
+            "A random analogue SLR",
+            "A random analogue camera w/ black and white film",
+            "A random analogue camera w/ color film",
+            "An analogue camera with only a few frames remaining",
+            "An analogue camera we haven't used for quite a while",
+            "A random analogue camera"
+        ];
+
+        const challenges = [
+            "Something Red: Capture an image where red is the dominant color.",
+            "Interesting Shadows: Play with light and shadow to create intriguing patterns or silhouettes.",
+            "Reflections: Find and photograph reflections in water, mirrors, or glass surfaces.",
+            "Monochromatic Theme: Use a single color tone throughout the image to create a cohesive look.",
+            "Macro Close-Up: Focus on tiny details with a macro lens or macro setting.",
+            "Golden Hour: Shoot during sunrise or sunset to utilize the soft, warm light.",
+            "Motion Blur: Experiment with longer exposures to capture movement, such as flowing water or moving vehicles.",
+            "Symmetry: Find and photograph symmetrical scenes or objects.",
+            "Minimalism: Create a simple, uncluttered composition with minimal elements.",
+            "Street Photography: Capture candid moments and the essence of everyday life in public spaces.",
+            "Silhouette: Photograph subjects as dark shapes against a brighter background.",
+            "Patterns and Textures: Highlight repetitive patterns or interesting textures.",
+            "Leading Lines: Use lines to guide the viewer’s eye through the photograph.",
+            "Contrasting Colors: Pair complementary colors to make your subject pop.",
+            "Aerial Perspective: Capture scenes from a higher vantage point, such as from a balcony or staircase.",
+            "Mirror Reflection: Use a mirror to create interesting reflections and compositions.",
+            "Texture in Nature: Focus on the textures found in natural environments like trees, rocks, or water.",
+            "Abstract Photography: Create images that focus on shapes, colors, and forms rather than recognizable subjects.",
+            "Bokeh Effects: Utilize out-of-focus light points to create beautiful bokeh in your images.",
+            "Storytelling: Create a series of images that tell a story or convey a narrative.",
+            "Portrait with Natural Light: Take a portrait using only natural lighting sources, such as sunlight filtering through a window.",
+            "Candid Portrait: Capture unposed, spontaneous moments in a portrait setting.",
+            "Environmental Portrait: Photograph a person in their natural environment, reflecting their personality or occupation.",
+            "Self-Portrait: Create a self-portrait that expresses something about you.",
+            "Pet Portrait: Photograph your pet, capturing their personality and charm.",
+            "Group Portrait: Photograph a group of people together, showcasing relationships or dynamics.",
+            "Black and White Portrait: Create a striking portrait using only black, white, and shades of gray.",
+            "High Key Portrait: Use predominantly light tones with minimal shadows for a bright and airy feel.",
+            "Low Key Portrait: Use predominantly dark tones with minimal light for a dramatic effect.",
+            "Close-Up Portrait: Focus tightly on the subject’s face or a specific feature, such as eyes or hands.",
+            "Expressive Portrait: Focus on capturing strong emotions or expressions to convey the subject's feelings and personality."
+        ];
+
+        function getRandomItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function spinSlots() {
+            const slots = document.querySelectorAll('.slot');
+
+            slots.forEach(slot => {
+                slot.classList.add('spinning');
+            });
+
+            setTimeout(() => {
+                slots.forEach(slot => {
+                    slot.classList.remove('spinning');
+                });
+                document.getElementById("digital-camera").textContent = getRandomItem(digitalCameras);
+                document.getElementById("analogue-camera").textContent = getRandomItem(analogueCameras);
+                document.getElementById("challenge").textContent = getRandomItem(challenges);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
